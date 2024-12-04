@@ -1,0 +1,492 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waseem Ullah</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+        }
+
+        body {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            color: #333;
+            background-color: #fff;
+            line-height: 1.6;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            background-color: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(8px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            color: #333;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #1a73e8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.2rem;
+        }
+
+        .social-icon {
+            font-size: 1.5rem;
+            color: #333;
+            transition: color 0.3s ease;
+        }
+
+        .social-icon:hover {
+            color: #1a73e8;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 6px;
+            cursor: pointer;
+            padding: 10px;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .hero {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 40px;
+            margin: 40px 0;
+            background-color: #f8f9fa;
+            padding: 40px;
+            border-radius: 12px;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 60%;
+        }
+
+        .hero-content h1 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+
+        .hero-content p {
+            text-align: justify;
+            margin: 0;
+        }
+
+        .hero-image {
+            flex: 0 0 auto;
+            width: 300px;
+            height: 350px; 
+            border-radius: 8px;
+            object-fit: cover; 
+            margin: 0;
+        }
+
+        .section {
+            margin-bottom: 60px;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .view-all-link {
+        display: inline-block;
+        margin-top: 10px;
+        padding: 10px 15px;
+        background-color: gray;
+        color: white;
+        text-decoration: none;
+        font-weight: bold;
+        border-radius: 5px;
+        transition: background-color 0.3s ease;
+    }
+
+    .view-all-link:hover {
+        background-color: lightgray;
+    }
+
+
+        .projects-grid, .publications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+        .project-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color:gray;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .project-link:hover {
+            background-color: lightgray;
+        }
+
+
+        .publication-card, .project-card {
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 8px;
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .publication-card:hover, .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-section {
+    padding: 60px 20px;
+    background: #E5E4E2;
+    border-radius: 16px;
+    text-align: center;
+    color: black;
+}
+
+.contact-section h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: black;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    justify-content: center;
+}
+
+.contact-card {
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: black;
+}
+
+.contact-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: black;
+}
+
+.contact-card p {
+    font-size: 1.2rem;
+    margin: 0;
+}
+
+.contact-card a {
+    color: black;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-card a:hover {
+    text-decoration: underline;
+}
+
+.contact-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.contact-card i {
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: black;
+    display: inline-block;
+}
+
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            background-color: lightgray;
+            color: black;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .nav-links.active {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background-color: white;
+                padding: 20px;
+                gap: 1rem;
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .hero {
+                flex-direction: column;
+                align-items: center;
+                padding: 30px;
+            }
+
+            .hero-content {
+                max-width: 100%;
+            }
+
+            .hero-image {
+                width: 300px; /* Smaller width on mobile */
+                height: 350px; /* Maintain smaller square aspect ratio */
+                margin-top: 20px;
+            }
+
+            .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="logo">Waseem Ullah</a>
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#">About</a>
+            <a href="#publications">Publications</a>
+            <a href="#projects">Projects</a>
+            <a href="#contact">Contact</a>
+            <a href="assets/pdf/Waseem_Ullah.pdf" target="_blank">CV</a>
+
+        </div>
+        <div class="social-links">
+
+            <a href="https://scholar.google.com/citations?user=cVzxZ6YAAAAJ&hl=en" target="_blank" class="social-icon" title="Google Scholar">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="social-icon-svg" width="24" height="24">
+                    <path d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"/>
+                    <path d="M12 12.5a4.5 4.5 0 1 1 0 9 4.5 4.5 0 0 1 0-9z"/>
+                </svg>
+            </a>
+            <a href="https://github.com/WaseemUllah655" target="_blank" class="social-icon" title="Github">
+                <i class="fab fa-github"></i>
+            </a>
+        </div>
+    </nav>
+    
+    <section class="hero" id="about">
+        <div class="hero-content">
+        <h1>About Me</h1>
+        <p>I am a passionate AI researcher specializing in federated learning, zero-shot learning, multimodal large language models (LLMs), and generative AI. With a Ph.D. in Software Convergence from Sejong University, I have developed advanced solutions in anomaly detection, video summarization, and intelligent multimedia systems. My work integrates cutting-edge AI techniques to address real-world challenges in surveillance, energy informatics, and activity recognition. Currently a Postdoctoral Researcher, I actively collaborate on global projects, pushing the boundaries of AI innovation through high-impact research and publications in leading journals. My goal is to advance adaptive, scalable, and transformative AI technologies for societal and industrial benefit.</p>
+        </div>
+        <img src="assets/figures/WaseemUllah.png" alt="Profile" class="hero-image">
+    </section>
+    
+<section class="section" id="publications">
+    <div class="section-header">
+        <h2>Publications</h2>
+        <a href="https://scholar.google.com/citations?user=cVzxZ6YAAAAJ&hl=en" target="_blank" class="view-all-link">View All →</a>
+    </div>
+    <div class="publications-grid">
+        <div class="publication-card">
+            <img src="assets/figures/adgraph.png" alt="AD-Graph: Anomaly Detection Graph Neural Network" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">AD-Graph: Anomaly Detection Graph Neural Network</h3>
+            <p>International Journal of Intelligent Systems, [IF: 7.0, Rank Q1]</p>
+        </div>
+        <div class="publication-card">
+            <img src="assets/figures/vision-transformer.png" alt="Vision Transformer for Anomaly Recognition" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">Vision Transformer Attention with Multi-Reservoir Echo State Network for Anomaly Recognition</h3>
+            <p>Information Processing & Management, 60(3), [IF: 7.466, Rank Q1]</p>
+        </div>
+        <div class="publication-card">
+            <img src="assets/figures/transcnn.png" alt="TransCNN for Surveillance Anomaly Detection" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">TransCNN: Hybrid CNN and Transformer Mechanism for Surveillance Anomaly Detection</h3>
+            <p>Engineering Applications of Artificial Intelligence, 123, [IF: 8.0, Rank Q1]</p>
+        </div>
+        <div class="publication-card">
+            <img src="assets/figures/sequential-attention.png" alt="Sequential Attention Mechanism" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">Sequential Attention Mechanism for Weakly Supervised Video Anomaly Detection</h3>
+            <p>Expert Systems with Applications, [IF: 8.5, Rank Q1]</p>
+        </div>
+        <div class="publication-card">
+            <img src="assets/figures/covid-variants.png" alt="COVID-19 Variant Classification" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">Multi-Stage Temporal Convolution Network for COVID-19 Variant Classification</h3>
+            <p>Diagnostics, 12(11), [IF: 3.992, Rank Q1]</p>
+        </div>
+        <div class="publication-card">
+            <img src="assets/figures/yolov5.png" alt="YOLOv5 for Fire Detection" style="max-width: 100%; height: auto; margin-bottom: 10px;">
+            <h3 class="card-title">A Modified YOLOv5 Architecture for Efficient Fire Detection in Smart Cities</h3>
+            <p>Expert Systems with Applications, [IF: 8.5, Rank Q1]</p>
+        </div>
+    </div>
+</section>
+
+<section class="section" id="projects">
+    <div class="section-header">
+        <h2>Projects</h2>
+    </div>
+    <div class="projects-grid">
+        <div class="project-card">
+            <h3 class="card-title">Smart City Surveillance Anomaly Detection</h3>
+            <p>Developed intelligent AI-based systems for anomaly detection and recognition in urban surveillance environments, contributing to enhanced safety and urban management.</p>
+            <p><strong>Technologies:</strong> Python, Deep Learning, Computer Vision</p>
+        </div>
+        <div class="project-card">
+            <h3 class="card-title">Energy Consumption Forecasting with AI</h3>
+            <p>Designed a trapezoid attention mechanism for power generation and consumption forecasting, enabling effective energy management and planning.</p>
+            <p><strong>Technologies:</strong> TensorFlow, PyTorch, Machine Learning</p>
+        </div>
+        <div class="project-card">
+            <h3 class="card-title">Anomaly Recognition in Surveillance</h3>
+            <p>Implemented hybrid CNN-Transformer models for anomaly detection in video surveillance systems, ensuring real-time and accurate recognition in diverse scenarios.</p>
+            <p><strong>Technologies:</strong> Python, Deep Learning, Computer Vision</p>
+        </div>
+        <div class="project-card">
+            <h3 class="card-title">Industrial Defective Chips Detection</h3>
+            <p>Designed a deep convolutional neural network with reverse feature mechanisms to detect manufacturing defects in industrial chips with high precision.</p>
+            <p><strong>Technologies:</strong> Python, TensorFlow, Deep Learning</p>
+        </div>
+        <div class="project-card">
+            <h3 class="card-title">COVID-19 Variant Classification</h3>
+            <p>Developed a multi-stage temporal convolution network to classify COVID-19 variants based on genomic data, enhancing variant detection accuracy.</p>
+            <p><strong>Technologies:</strong> Python, Bioinformatics, Deep Learning</p>
+        </div>
+        <div class="project-card">
+            <h3 class="card-title">Human Interaction Recognition</h3>
+            <p>Built a multi-stream sequence learning framework for recognizing complex human interactions in videos, advancing activity recognition technologies.</p>
+            <p><strong>Technologies:</strong> Python, PyTorch, Video Analysis</p>
+        </div>
+    </div>
+</section>
+
+
+
+    <section class="contact-section" id="contact">
+        <h2>Get in Touch</h2>
+        <div class="contact-grid">
+            <div class="contact-card">
+                <i class="fas fa-envelope"></i>
+                <h3>Email</h3>
+                <p><a href="mailto:waseemullah@ieee.org">waseemullah@ieee.org</a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-linkedin"></i>
+                <h3>LinkedIn</h3>
+                <p><a href="https://www.linkedin.com/in/waseem-ullah-78a774178/" target="_blank">Waseem Ullah
+                </a></p>
+            </div>
+            <div class="contact-card">
+                <i class="fab fa-twitter"></i>
+                <h3>Twitter</h3>
+                <p><a href="https://x.com/itxsaadkhankori" target="_blank">Waseem Ullah</a></p>
+            </div>
+        </div>
+    </section>
+    
+
+    <footer>
+        <p>© 2024 Waseem Ullah. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Get the hamburger menu and nav links elements
+        const hamburger = document.getElementById('hamburger-menu');
+        const navLinks = document.getElementById('nav-links');
+
+        // Add click event listener to hamburger menu
+        hamburger.addEventListener('click', () => {
+            // Toggle active class on hamburger menu for animation
+            hamburger.classList.toggle('active');
+            // Toggle active class on nav links to show/hide menu
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a nav link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!hamburger.contains(e.target) && !navLinks.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            }
+        });
+    </script>
+
+</body>
+</html>
